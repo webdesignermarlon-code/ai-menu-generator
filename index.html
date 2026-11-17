@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Menu Generator | Descrições para Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="max-w-2xl w-full bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-2xl">
+        <h1 class="text-2xl font-bold mb-2 text-red-500">AI Menu Generator 🍔</h1>
+        <p class="text-slate-400 text-sm mb-6">Crie descrições irresistíveis e otimizadas para conversão em apps de delivery.</p>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-1 text-slate-300">Nome do Prato:</label>
+                <input type="text" id="dishName" placeholder="Ex: Burger Artesanal Duplo Cheddar" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-red-500">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1 text-slate-300">Ingredientes Principais:</label>
+                <input type="text" id="ingredients" placeholder="Ex: Pão brioche, 2 blends de 160g, cheddar inglês, bacon crocante" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-red-500">
+            </div>
+
+            <button onclick="gerarDescricao()" class="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-3 rounded-lg transition-all shadow-lg">
+                Gerar Descrição Vendedora
+            </button>
+        </div>
+
+        <div class="mt-6 hidden" id="resultadoArea">
+            <label class="block text-sm font-medium mb-1 text-slate-300">Sugestão para o Cardápio:</label>
+            <div class="bg-slate-950 border border-slate-800 rounded-lg p-4 text-amber-400 font-mono text-sm whitespace-pre-wrap" id="menuOutput"></div>
+        </div>
+    </div>
+
+    <script>
+        function gerarDescricao() {
+            const prato = document.getElementById('dishName').value.trim();
+            const ingred = document.getElementById('ingredients').value.trim();
+            if (!prato || !ingred) {
+                alert('Preencha o nome do prato e os ingredientes!');
+                return;
+            }
+
+            const descricao = `🔥 ${prato.toUpperCase()} 🔥\n\nPrepare-se para uma experiência única! Nosso ${prato} é preparado com ${ingred}, selecionados para garantir máxima suculência e sabor em cada mordida.\n\n✨ Perfeito para matar a sua fome agora! Peça já o seu!`;
+
+            document.getElementById('menuOutput').innerText = descricao;
+            document.getElementById('resultadoArea').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
